@@ -1,0 +1,36 @@
+/*
+ * Configuration Examples
+ *
+ */
+
+/*
+ * Ant-Colony Optimization
+ *
+ */ 
+
+At the beginning of the src/SchedulingExample.cpp, please set:
+
+/*Application Parameters*/
+#define ANT_COLONY_OPTIMIZATION 1
+#define COMBS_EXAMPLE			0
+
+Within the main function, you may define the Main & Child Resources that optimization will be performed over. Currently one main resource can be used, "NUMA_PROCESSING", which has the child resource "CPU_PROCESSING". The idea is that we would like to have a hierarchical allocation of resources, since, e.g., switching a thread between NUMA nodes should not be performed so often as compared to switching the CPU node of a thread within the same NUMA node. Thus, we would like to have different reaoning when we are concerned with NUMA selection than when we do CPU selection. To this end, we needed to define a different algorithm for allocating threads to NUMA nodes (corresponds to the acronym "AL" - aspiration learning), which performs switches according to an upper performance threshold and a lower performance threshold. Briefly, the main idea is that if the current running average performance of a thread drops below the low performance threshold, then we perform a switch to a different NUMA node.
+
+The previous "RL" selection reasoning can also be used for NUMA selection, however switching may be more frequent.
+
+std::vector< std::string > RESOURCES = {"NUMA_PROCESSING","NUMA_MEMORY"};
+std::vector< std::string > RESOURCES_EST_METHODS = {"AL", "RL"};
+std::vector< std::string > RESOURCES_OPT_METHODS = {"AL", "RL"};
+std::vector< std::string > CHILD_RESOURCES = {"CPU_PROCESSING","NULL"};
+std::vector< std::string > CHILD_RESOURCES_EST_METHODS = {"RL", "RL"};
+std::vector< std::string > CHILD_RESOURCES_OPT_METHODS = {"RL", "RL"};
+
+Within the main function of the SchedulingExample.cpp, you can define the max number of NUMA nodes, and CPU nodes that can be used.
+
+/*
+ * Maximum allowable number of resources
+ */
+std::vector< unsigned int > MAX_NUMBER_MAIN_RESOURCES = { 2 , 1 };
+std::vector< std::vector< unsigned int > > MAX_NUMBER_CHILD_RESOURCES = { { 5 , 5 }, { 0 , 0 } };
+
+In the first vector, we can define the maximum number of sources available for each one of the main Resources. Let's say, when there are 2 NUMA nodes, then we can assign the number 2 in the "NUMA_PROCESSING" resource. For each one of these 2 NUMA nodes, we can also define the maximum number of CPU nodes that can be used. In this example, this should be a vector of 2, e.g., { 5 , 5 }.

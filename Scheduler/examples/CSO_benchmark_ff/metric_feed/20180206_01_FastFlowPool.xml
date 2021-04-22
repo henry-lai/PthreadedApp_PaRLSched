@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Metrics>
+<File name="/home/martinez/rephrase/usecase-source/CSO_benchmark/OptiFramework/benchmark_data/Scholl_bin1data/N1C2W1_H.BPP">
+<Metric name="Processed_Workpieces" value="4263" desc="Processed Workpieces" />
+<Metric name="PFRTI" value="62.07" />
+<Metric name="PPRTI" value="61.96" />
+<Metric name="PPSUI" value="61.08" />
+<Metric name="PPRSI" value="0.83" />
+<Metric name="PPMRS" value="38068" />
+<Metric name="PPARS" value="0" />
+<Metric name="PPVCS" value="27" />
+<Metric name="PPICS" value="5230" />
+<Metric name="PPCRF" value="81407599" />
+<Metric name="PPCMS" value="3547954" />
+<Metric name="PPINS" value="280476666115" />
+<Metric name="PPCYL" value="166717409792" />
+<Metric name="PL1DL" value="104821520532" />
+<Metric name="PL1DM" value="5031938410" />
+<Metric name="PLCDL" value="25444078" />
+<Metric name="PLCDM" value="0" />
+<Metric name="Adaptivity_ProcessIPC" value="1.68234779118106705571" />
+<Metric name="Adaptivity_ProcessMPI" value="0.00001264972965182522" />
+<Metric name="Adaptivity_ProcessL1CMR" value="20.83124076472947132117" />
+<Metric name="Adaptivity_ProcessLLCMR" value="0" />
+<Metric name="Adaptivity_ProcessCMR" value="0.04358258987591563780" />
+</File>
+</Metrics>

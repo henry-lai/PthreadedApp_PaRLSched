@@ -1,0 +1,15 @@
+       START > Loading input from file
+    376765us > Loading input from file
+       START > DSP algorithm
+       START -> RSB processing
+      2031us -> RSB processing
+       START -> RCB filtering
+   5937796us -> RCB filtering
+       START -> RCB decimation
+     40622us -> RCB decimation
+       START -> Convert data to JSON
+      2398us -> Convert data to JSON
+   5982878us > DSP algorithm
+       START > SNI algorithm
+    190437us > SNI algorithm
+Total time measured: 6550080us
