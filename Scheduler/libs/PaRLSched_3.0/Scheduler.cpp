@@ -345,7 +345,7 @@ Scheduler::Scheduler(const unsigned int& num_threads)
 		printf("Your system does not support NUMA API\n");
 		exit(1);
 	}
-	//printf("NUMA Nodes available = %d\n",(int)numa_max_node()+1);
+	printf("NUMA Nodes available = %d\n",(int)numa_max_node()+1);
 
 	/*
 	 * Initializing Variables related to the Architecture
@@ -483,16 +483,16 @@ void Scheduler::run()
 	while (active_threads_)
 	{
 
-		//std::cout << " ~~~~~~~~~~~~~~ new scheduler update ~~~~~~~~~~~~~~~\n";
+		std::cout << " ~~~~~~~~~~~~~~ new scheduler update ~~~~~~~~~~~~~~~\n";
 
 		/*
 		 * We would like the scheduler to
 		 */
 		nanosleep(&ts_, NULL);
-		//std::cout << " sched iteration " << sched_iteration_ << std::endl;
+		std::cout << " sched iteration " << sched_iteration_ << std::endl;
 
 		active_threads_ = false;
-		//std::cout << " The current thread runs on CPU: " << sched_getcpu() << std::endl;
+		std::cout << " The current thread runs on CPU: " << sched_getcpu() << std::endl;
 
 		/*
 		 * Performance Counting and Scheduling Update
@@ -1060,9 +1060,9 @@ void Scheduler::performance_preprocessing(const unsigned int& resource_ind)
 		}
 	}
 
-	//std::cout << "~~~~~Average Performances \n";
-	//std::cout << "  current average performance : " << overall_Performance_.ave_performance_per_main_resource_[resource_ind] << ", run average perf. " << overall_Performance_.run_average_performance_[resource_ind] << std::endl;
-	//std::cout << "  current balanced performance : " << overall_Performance_.ave_balanced_performance_per_main_resource_[resource_ind] << ", run average balanced perf. " << overall_Performance_.run_average_balanced_performance_[resource_ind] << std::endl;
+	std::cout << "~~~~~Average Performances \n";
+	std::cout << "  current average performance : " << overall_Performance_.ave_performance_per_main_resource_[resource_ind] << ", run average perf. " << overall_Performance_.run_average_performance_[resource_ind] << std::endl;
+	std::cout << "  current balanced performance : " << overall_Performance_.ave_balanced_performance_per_main_resource_[resource_ind] << ", run average balanced perf. " << overall_Performance_.run_average_balanced_performance_[resource_ind] << std::endl;
 
 	if (RESOURCES_[resource_ind].compare("NUMA_PROCESSING") == 0){
 		run_average_performance_ = overall_Performance_.run_average_performance_[resource_ind];
@@ -1557,7 +1557,7 @@ void Scheduler::assign_processing_node(const unsigned int& thread,
 			if (CPU_ISSET(cpu,&mask_tmp) != 0)
 			{
 				vec_cpus.push_back(cpu);
-//				std::cout << " thread " << tinfo_[thread].thread_num << " will run on CPU " << cpu << " / thread (tid) = " << tinfo_[thread].tid << std::endl;
+				std::cout << " thread " << tinfo_[thread].thread_num << " will run on CPU " << cpu << " / thread (tid) = " << tinfo_[thread].tid << std::endl;
 			}
 		}
 	}
@@ -1601,7 +1601,7 @@ void Scheduler::assign_memory_node(const unsigned int & thread_num, const unsign
 	numa_bitmask_setbit( numa_old_nodes, old_numa_node);
 	numa_bitmask_setbit( numa_new_nodes, new_numa_node);
 
-	//std::cout << " allocating memory ... \n";
+	std::cout << " allocating memory ... \n";
 
 	if (thd_suspend (tinfo_[thread_num].thread_id) != 0){
 		printf ("%s:%d\t ERROR: Suspend thread failed!\n", __FILE__, __LINE__);
@@ -1625,7 +1625,7 @@ void Scheduler::assign_memory_node2(std::vector<unsigned int>& num_threads_per_r
 {
 
 	int pid = tinfo_[0].pid;
-	//std::cout << " ************** pid is " << tinfo_[0].pid << " and tid is " << tinfo_[0].tid << " and thread_id " << tinfo_[0].thread_num << std::endl;
+	std::cout << " ************** pid is " << tinfo_[0].pid << " and tid is " << tinfo_[0].tid << " and thread_id " << tinfo_[0].thread_num << std::endl;
 
 	char *page_base;
 	char *pages;
