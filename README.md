@@ -18,5 +18,3 @@ Installation of Scheduler
 - run ' make '
 - cd examples to find directories of executable examples. i.e. examples/charmap_pthread/, examples/blackscholes etc
 
-NOTE* - I have altered the output of Scheduler so if you run build/example/charmap... the output is different, it will only contain thread count and execution times.
-To see the full output of Scheduler, please go to Scheduler/libs/PaRLSched_3.0 and you will find Scheduler_backup.cpp which contains original unaltered version of Scheduler. Simply rename that to Scheduler.cpp and cd Scheduler/build and run make.
